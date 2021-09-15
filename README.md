@@ -10,13 +10,15 @@ Install create-react-app npm package globally. This will help to easily run the 
 
 npm install -g create-react-app
 
-### `npm start`
+### Axios
+
+Axios is used for API calls
+
+## `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
 ## Application design
 
