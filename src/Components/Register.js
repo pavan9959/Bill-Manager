@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
 import { register } from "../action/action";
+import reg from "../image/reg.svg"
 
 const Register = (props) => {
   const [name, setname] = useState("");
@@ -50,14 +51,14 @@ const Register = (props) => {
   return (
     <div
       style={{
-        textAlign: "center",
         backgroundColor: "lightsteelblue",
         height: "100vh",
         position: "relative",
-        top: "-20px",
+        top: "7px",
       }}
     >
-      <div style={{ textAlign: "center", position: "relative", top: "100px" }}>
+      <img src={reg} style={{position:"relative",top:"40px",left:"10px",height:"500px"}} />
+      <div style={{ textAlign: "center", position: "relative", top: "-390px",right:"-250px",display:"inline" }}>
         <h1>Register</h1>
         <form onSubmit={handelSubmit}>
           <input

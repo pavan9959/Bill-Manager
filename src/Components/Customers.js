@@ -235,14 +235,15 @@ export default function Coustomer() {
   return (
     <div>
       <div>
+      <h1 style={{ display: "inline" }}>CUSTOMERS</h1>
         <input
           type="text"
           placeholder="Search Customer"
           style={{
-            marginBottom: "8px",
-            marginTop: "8px",
+            position: "relative",
+            left: "34px",
             height: "35px",
-            width: "840px",
+            width: "610px"
           }}
           value={search}
           onChange={handelSearch}
@@ -333,7 +334,7 @@ export default function Coustomer() {
                   position: "relative",
                   left: "17px",
                   backgroundColor: "whitesmoke",
-                  top: "-50px",
+                  top: "-41px",
                 }}
               >
                 <CardContent>
@@ -411,7 +412,7 @@ export default function Coustomer() {
                   position: "relative",
                   left: "17px",
                   backgroundColor: "whitesmoke",
-                  top: "-50px",
+                  top: "-41px",
                 }}
               >
                 <CardContent>

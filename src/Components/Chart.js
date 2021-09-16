@@ -87,12 +87,11 @@ const Charts = () => {
   const barData = Customer();
 
   return (
-    <div style={{ display: "grid" }}>
+    <div style={{ display:"flex" }}>
       <Chart
-        style={{ position: "relative", left: "20px" }}
-        width={"1200px"}
-        height={"500px"}
-        chartType="ScatterChart"
+        width={"500px"}
+        height={"300px"}
+        chartType="AreaChart"
         loader={<div>Loading Chart</div>}
         data={data}
         options={{
@@ -104,24 +103,22 @@ const Charts = () => {
       />
 
       <Chart
-        style={{ position: "relative", left: "89px" }}
-        width={"1000px"}
-        height={"500px"}
+        style={{position:"relative",top:"27px"}}
+        width={"500px"}
+        height={"250px"}
         chartType="Bar"
         loader={<div>Loading Chart</div>}
         data={barData}
         options={{
           chart: {
-            title: "Regular Customers",
           },
         }}
         rootProps={{ "data-testid": "2" }}
       />
 
       <Chart
-        style={{ position: "relative", left: "170px" }}
-        width={"800px"}
-        height={"600px"}
+        width={"500px"}
+        height={"300px"}
         chartType="PieChart"
         loader={<div>Loading Chart</div>}
         data={[

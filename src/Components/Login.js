@@ -2,6 +2,7 @@ import { useState } from "react";
 import { loginrequest } from "../action/action";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import logo from "../image/logo.svg"
 
 const Login = (props) => {
   const [email, setemail] = useState("");
@@ -25,7 +26,7 @@ const Login = (props) => {
     if (email_check && data.password.length > 8) {
       settoogle(false);
       const redirect = () => {
-        props.history.push("/dashboard");
+        props.history.push("/");
       };
       dispatch(loginrequest(data, redirect));
     } else {
@@ -37,13 +38,14 @@ const Login = (props) => {
   return (
     <div
       style={{
-        backgroundColor:"lightsteelblue",
+        backgroundImage:"lightsteelblue",
         height: "100vh",
         position:"relative"
         ,top:"-20px"
       }}
     >
-      <div style={{ textAlign: "center",position:"relative",top:"171px" }}>
+      <img src={logo} style={{position:"relative",top:"40px"}}/>
+      <div style={{ textAlign: "center",position:"relative",top:"-380px",left: "200px",display:"inline" }}>
         <h1 >Login</h1>
         <div>
           <form onSubmit={handelSubmit}>

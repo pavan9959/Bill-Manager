@@ -58,22 +58,21 @@ const Dashboard = () => {
   const classesss = useStyles();
   return (
     <div>
-    <div style={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
+    <div style={{ display: "flex" }}>
       <Card
         className={classesss.root}
         style={{
-          width: "435px",
-          height: "300px",
+          width: "300px",
+          height: "200px",
           position: "relative",
           left: "1px",
-          backgroundColor: "whiteSmoke",
+          backgroundColor: "orange",
           top: "30px",
         }}
       >
-        <CardContent style={{ textAlign: "center" }}>
+        <CardContent style={{ textAlign: "center",position:"relative",top:"-34px" }}>
           <h1>Customer</h1>
           <hr />
-          <br />
           <h2>Total customers</h2>
           <h1>{customer.length}</h1>
         </CardContent>
@@ -82,18 +81,17 @@ const Dashboard = () => {
       <Card
         className={classesss.root}
         style={{
-          width: "430px",
-          height: "300px",
+          width: "300px",
+          height: "200px",
           position: "relative",
-          left: "7px",
-          backgroundColor: "whiteSmoke",
+          left: "47px",
+          backgroundColor: "lightblue",
           top: "30px",
         }}
       >
-        <CardContent style={{ textAlign: "center" }}>
+        <CardContent style={{ textAlign: "center",position:"relative",top:"-34px" }}>
           <h1>Admin</h1>
           <hr />
-          <br />
           <h2>{Admin.username}</h2>
           <h3>{Admin.email}</h3>
           <h4>{Admin.address}</h4>
@@ -102,18 +100,17 @@ const Dashboard = () => {
       <Card
         className={classesss.root}
         style={{
-          width: "435px",
-          height: "300px",
+          width: "300px",
+          height: "200px",
           position: "relative",
-          left: "13px",
-          backgroundColor: "whiteSmoke",
+          left: "96px",
+          backgroundColor: "orangered",
           top: "30px",
         }}
       >
-        <CardContent style={{ textAlign: "center" }}>
+        <CardContent style={{ textAlign: "center",position:"relative",top:"-34px" }}>
           <h1>Products</h1>
           <hr />
-          <br />
           <h2>Total Products</h2>
           <h1>{ProductList.length}</h1>
         </CardContent>
@@ -121,15 +118,15 @@ const Dashboard = () => {
       <Card
         className={classesss.root}
         style={{
-          width: "435px",
+          width: "300px",
           height: "200px",
           position: "relative",
-          left: "452px",
-          backgroundColor: "whiteSmoke",
-          top: "50px",
+          left: "148px",
+          backgroundColor: "lightgreen",
+          top: "30px",
         }}
       >
-        <CardContent style={{ textAlign: "center" }}>
+        <CardContent style={{ textAlign: "center",position:"relative",top:"-34px" }}>
           <h1>Bills</h1>
           <hr />
           <h2>Total Bills</h2>
@@ -137,7 +134,7 @@ const Dashboard = () => {
         </CardContent>
       </Card>
     </div>
-    <div style={{ position: "relative", top: "54px", left: "22px" }}>
+    <div style={{ position: "relative", top: "54px", left: "-50px" }}>
         <Chart />
       </div>
     </div>

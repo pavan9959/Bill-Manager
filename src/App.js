@@ -1,5 +1,5 @@
 import Router from "./Router/Router";
-import Home from "./Components/Home";
+import Navigation from "./Components/Navigation";
 import { useSelector } from "react-redux";
 
 function App(props) {
@@ -8,7 +8,7 @@ function App(props) {
   });
 
   return (
-    <div>{state || localStorage.getItem("token") ? <Router /> : <Home />}</div>
+    <div>{state || localStorage.getItem("token") ? <Router /> : <Navigation />}</div>
   );
 }
 

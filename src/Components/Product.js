@@ -214,7 +214,7 @@ export default function Product() {
             position: "relative",
             left: "40px",
             height: "35px",
-            width: "621px",
+            width: "621px"
           }}
           value={search}
           onChange={handelSearch}
