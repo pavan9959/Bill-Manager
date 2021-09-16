@@ -10,7 +10,11 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import { Button } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import { Bill_list, delete_bill } from "../action/action";
+import {
+  Bill_list,
+  delete_bill,
+  add_Bill,
+} from "../action/Bills-actions/Bills-actions";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import DeleteTwoToneIcon from "@material-ui/icons/DeleteTwoTone";
@@ -20,9 +24,10 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
-import { coustomer_api, Product_List, add_Bill } from "../action/action";
 import DehazeTwoToneIcon from "@material-ui/icons/DehazeTwoTone";
 import ReactToPdf from "react-to-pdf";
+import { coustomer_api } from "../action/customer-actions/Customer-actions";
+import { Product_List } from "../action/Products-actions/Products-actions";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -127,14 +132,8 @@ export default function Bill() {
 
   useEffect(() => {
     dispatch(Bill_list());
-  }, []);
-
-  useEffect(() => {
-    dispatch(coustomer_api());
-  }, []);
-
-  useEffect(() => {
     dispatch(Product_List());
+    dispatch(coustomer_api());
   }, []);
 
   useEffect(() => {
@@ -680,7 +679,7 @@ export default function Bill() {
               <Button
                 onClick={handelDownload}
                 color="primary"
-                style={{ position: "relative", left: "310px",bottom:"46px" }}
+                style={{ position: "relative", left: "310px", bottom: "46px" }}
               >
                 Close
               </Button>
@@ -690,7 +689,15 @@ export default function Bill() {
         </div>
         <ReactToPdf targetRef={ref} filename="bill.pdf">
           {({ toPdf }) => (
-            <Button onClick={toPdf} style={{position:"relative",bottom:"10px", height: "200px",backgroundColor:"lightblue" }}>
+            <Button
+              onClick={toPdf}
+              style={{
+                position: "relative",
+                bottom: "10px",
+                height: "200px",
+                backgroundColor: "lightblue",
+              }}
+            >
               Download Bill
             </Button>
           )}

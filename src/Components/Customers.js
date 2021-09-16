@@ -9,7 +9,12 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import { Button } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import { add_coustomer, coustomer_api, delet, edit } from "../action/action";
+import {
+  add_coustomer,
+  coustomer_api,
+  delet,
+  edit,
+} from "../action/customer-actions/Customer-actions";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -235,7 +240,7 @@ export default function Coustomer() {
   return (
     <div>
       <div>
-      <h1 style={{ display: "inline" }}>CUSTOMERS</h1>
+        <h1 style={{ display: "inline" }}>CUSTOMERS</h1>
         <input
           type="text"
           placeholder="Search Customer"
@@ -243,7 +248,7 @@ export default function Coustomer() {
             position: "relative",
             left: "34px",
             height: "35px",
-            width: "610px"
+            width: "610px",
           }}
           value={search}
           onChange={handelSearch}

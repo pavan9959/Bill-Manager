@@ -1,5 +1,5 @@
-import { Link, Route ,withRouter} from "react-router-dom";
-import { logout_request } from "../action/action";
+import { Link, Route, withRouter } from "react-router-dom";
+import { logout_request } from "../action/Logout/Logout-action";
 import { useDispatch } from "react-redux";
 import Coustomers from "../Components/Customers";
 import Product from "../Components/Product";
@@ -30,7 +30,6 @@ function HomeIcon(props) {
 }
 
 const Router = (props) => {
-
   const classes = useStyles();
 
   const dispatch = useDispatch();
@@ -38,7 +37,6 @@ const Router = (props) => {
   const handel_logout = () => {
     localStorage.removeItem("token");
     dispatch(logout_request());
-
   };
 
   return (
@@ -58,23 +56,19 @@ const Router = (props) => {
                 Customers
               </Link>
             </Button>
-            <Button color="inherit" >
+            <Button color="inherit">
               <Link to="/product" style={{ color: "black" }}>
                 Products
               </Link>
             </Button>
-            <Button color="inherit" >
+            <Button color="inherit">
               <Link to="/bill" style={{ color: "black" }}>
                 Bill
               </Link>
             </Button>
           </Typography>
           <Button color="inherit">
-            <Link
-              to=""
-              onClick={handel_logout}
-              style={{ color: "black" }}
-            >
+            <Link to="" onClick={handel_logout} style={{ color: "black" }}>
               Logout
             </Link>
           </Button>
@@ -86,7 +80,6 @@ const Router = (props) => {
       <Route path="/coustomers" exact={true} component={Coustomers} />
     </div>
   );
-  
 };
 
 export default withRouter(Router);

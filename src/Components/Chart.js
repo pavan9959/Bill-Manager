@@ -1,12 +1,10 @@
 import React from "react";
 import Chart from "react-google-charts";
 import { useSelector, useDispatch } from "react-redux";
-import {useEffect } from "react";
-import {
-  coustomer_api,
-  Product_List,
-  Bill_list,
-} from "../action/action";
+import { useEffect } from "react";
+import { Bill_list } from "../action/Bills-actions/Bills-actions";
+import { coustomer_api } from "../action/customer-actions/Customer-actions";
+import { Product_List } from "../action/Products-actions/Products-actions";
 
 const Charts = () => {
   const dispatch = useDispatch();
@@ -25,15 +23,10 @@ const Charts = () => {
 
   useEffect(() => {
     dispatch(coustomer_api());
-  }, []);
-
-  useEffect(() => {
     dispatch(Product_List());
-  }, []);
-
-  useEffect(() => {
     dispatch(Bill_list());
   }, []);
+  console.log(billData)
 
   const chartdata = () => {
     if (billData) {
@@ -83,17 +76,14 @@ const Charts = () => {
     return obj;
   };
 
-  const data = chartdata();
-  const barData = Customer();
-
   return (
-    <div style={{ display:"flex" }}>
+    <div style={{ display: "flex" }}>
       <Chart
         width={"500px"}
         height={"300px"}
         chartType="AreaChart"
         loader={<div>Loading Chart</div>}
-        data={data}
+        data={chartdata()}
         options={{
           chart: {
             title: "Daily Sales",
@@ -103,21 +93,22 @@ const Charts = () => {
       />
 
       <Chart
-        style={{position:"relative",top:"27px"}}
+        style={{ position: "relative", top: "27px" }}
         width={"500px"}
         height={"250px"}
         chartType="Bar"
         loader={<div>Loading Chart</div>}
-        data={barData}
+        data={Customer()}
         options={{
           chart: {
+            title:"Regular Customer"
           },
         }}
         rootProps={{ "data-testid": "2" }}
       />
 
       <Chart
-        width={"500px"}
+        width={"400px"}
         height={"300px"}
         chartType="PieChart"
         loader={<div>Loading Chart</div>}

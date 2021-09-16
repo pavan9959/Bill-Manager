@@ -15,7 +15,7 @@ import {
   Product_List,
   deletE,
   edit_product,
-} from "../action/action";
+} from "../action/Products-actions/Products-actions";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -214,7 +214,7 @@ export default function Product() {
             position: "relative",
             left: "40px",
             height: "35px",
-            width: "621px"
+            width: "621px",
           }}
           value={search}
           onChange={handelSearch}
