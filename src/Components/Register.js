@@ -105,12 +105,12 @@ const Register = (props) => {
             style={{ marginBottom: "5px", width: "300px", height: "30px" }}
           ></input>
           <br />
-          <input
+          <textarea
             placeholder="Address"
             value={address}
             onChange={handeladdress}
-            style={{ marginBottom: "5px", width: "300px", height: "30px" }}
-          ></input>
+            style={{ marginBottom: "5px", width: "300px", height: "50px" }}
+          ></textarea>
           <br />
           <button
             onClick={handelSubmit}

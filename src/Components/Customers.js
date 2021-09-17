@@ -10,8 +10,8 @@ import TableRow from "@material-ui/core/TableRow";
 import { Button } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import {
-  add_coustomer,
-  coustomer_api,
+  add_customer,
+  customer_api,
   delet,
   edit,
 } from "../action/customer-actions/Customer-actions";
@@ -64,7 +64,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Coustomer() {
+export default function Customer() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [name, setname] = useState("");
@@ -85,21 +85,21 @@ export default function Coustomer() {
 
   const dispatch = useDispatch();
 
-  const AddCoustomer = useSelector((state) => {
-    return state.Updatecoustomer;
+  const AddCustomer = useSelector((state) => {
+    return state.Updatecustomer;
   });
 
   const rows = useSelector((state) => {
-    return state.CoustomerList;
+    return state.CustomerList;
   });
 
   useEffect(() => {
-    dispatch(coustomer_api());
+    dispatch(customer_api());
   }, []);
 
   useEffect(() => {
-    setdata2([...data, ...AddCoustomer]);
-  }, [AddCoustomer]);
+    setdata2([...data, ...AddCustomer]);
+  }, [AddCustomer]);
 
   useEffect(() => {
     setdata2(rows);
@@ -142,7 +142,7 @@ export default function Coustomer() {
       setname("");
       setphone("");
       setmail("");
-      dispatch(add_coustomer(data));
+      dispatch(add_customer(data));
     } else if ((name.lengt == 0, phone.length == 0, mail.length == 0)) {
       Swal.fire("Enter details");
     } else {
@@ -161,14 +161,14 @@ export default function Coustomer() {
   const update_edit = (id, Data) => {
     settoogleedit(!toogleedit);
     if (id) {
-      const edited_coustomer = data.map((ele) => {
+      const edited_customer = data.map((ele) => {
         if (id != ele._id) {
           return ele;
         } else {
           return Data;
         }
       });
-      setdata(edited_coustomer);
+      setdata(edited_customer);
     }
   };
 

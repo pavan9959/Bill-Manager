@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { user_detail } from "../action/admin-action/admin-action";
-import { coustomer_api } from "../action/customer-actions/Customer-actions";
+import { customer_api } from "../action/customer-actions/Customer-actions";
 import Chart from "./Chart";
 import { Product_List } from "../action/Products-actions/Products-actions";
 import { Bill_list } from "../action/Bills-actions/Bills-actions";
@@ -22,11 +22,11 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   const customer = useSelector((state) => {
-    return state.CoustomerList;
+    return state.CustomerList;
   });
 
   useEffect(() => {
-    dispatch(coustomer_api());
+    dispatch(customer_api());
     dispatch(user_detail());
     dispatch(Product_List());
     dispatch(Bill_list());

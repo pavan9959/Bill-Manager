@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import axios from "axios";
 
-export const coustomer_api = () => {
+export const customer_api = () => {
   return (dispatch) => {
     axios
       .get("http://dct-billing-app.herokuapp.com/api/customers", {
@@ -9,7 +9,7 @@ export const coustomer_api = () => {
       })
       .then((response) => {
         const result = response.data;
-        dispatch({ type: "Coustomers_list", payload: result });
+        dispatch({ type: "Customers_list", payload: result });
       })
       .catch((err) => {
         alert(console.error.message);
@@ -17,9 +17,9 @@ export const coustomer_api = () => {
   };
 };
 
-export const add_coustomer = (data) => {
+export const add_customer = (data) => {
   const add = (result) => {
-    return { type: "add_coustomer", payload: result };
+    return { type: "add_customer", payload: result };
   };
   return (dispatch) => {
     axios
@@ -31,6 +31,7 @@ export const add_coustomer = (data) => {
         if (result.hasOwnProperty("errors")) {
           Swal.fire("please enter correct details");
         } else {
+          console.log("add",result)
           dispatch(add(result));
         }
       })
@@ -41,9 +42,6 @@ export const add_coustomer = (data) => {
 };
 
 export const edit = (id, data) => {
-  const ed = (result) => {
-    return { type: "add_coustomer", payload: result };
-  };
   return (dispatch) => {
     axios
       .put(`http://dct-billing-app.herokuapp.com/api/customers/${id}`, data, {
@@ -51,7 +49,6 @@ export const edit = (id, data) => {
       })
       .then((response) => {
         const result = response.data;
-        // dispatch(ed(result))
       })
       .catch((err) => {
         Swal.fire("error");
@@ -60,9 +57,6 @@ export const edit = (id, data) => {
 };
 
 export const delet = (id) => {
-  // const del=(result)=>{
-  //     return {type:"add_coustomer",payload:result}
-  // }
 
   return (dispatch) => {
     axios

@@ -135,14 +135,14 @@ export default function Product() {
     if (id) {
       settoogleedit(!toogleedit);
       if (id) {
-        const edited_coustomer = data.map((ele) => {
+        const edited_customer = data.map((ele) => {
           if (id != ele._id) {
             return ele;
           } else {
             return Data;
           }
         });
-        setdata(edited_coustomer);
+        setdata(edited_customer);
       }
     }
   };
@@ -209,7 +209,7 @@ export default function Product() {
         <h1 style={{ display: "inline" }}>PRODUCTS</h1>
         <input
           type="text"
-          placeholder="Search Coustomer"
+          placeholder="Search Customer"
           style={{
             position: "relative",
             left: "40px",

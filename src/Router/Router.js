@@ -1,7 +1,7 @@
 import { Link, Route, withRouter } from "react-router-dom";
 import { logout_request } from "../action/Logout/Logout-action";
 import { useDispatch } from "react-redux";
-import Coustomers from "../Components/Customers";
+import Customers from "../Components/Customers";
 import Product from "../Components/Product";
 import Bill from "../Components/Bill";
 import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
@@ -52,7 +52,7 @@ const Router = (props) => {
           </Typography>
           <Typography variant="h6" className={classes.title}>
             <Button color="inherit">
-              <Link to="/coustomers" style={{ color: "black" }}>
+              <Link to="/customers" style={{ color: "black" }}>
                 Customers
               </Link>
             </Button>
@@ -77,7 +77,7 @@ const Router = (props) => {
       <Route path="/" exact={true} component={Dashboard} />
       <Route path="/product" exact={true} component={Product} />
       <Route path="/bill" exact={true} component={Bill} />
-      <Route path="/coustomers" exact={true} component={Coustomers} />
+      <Route path="/customers" exact={true} component={Customers} />
     </div>
   );
 };

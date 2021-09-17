@@ -3,7 +3,7 @@ import Chart from "react-google-charts";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Bill_list } from "../action/Bills-actions/Bills-actions";
-import { coustomer_api } from "../action/customer-actions/Customer-actions";
+import { customer_api } from "../action/customer-actions/Customer-actions";
 import { Product_List } from "../action/Products-actions/Products-actions";
 
 const Charts = () => {
@@ -14,7 +14,7 @@ const Charts = () => {
   });
 
   const customerData = useSelector((state) => {
-    return state.CoustomerList;
+    return state.CustomerList;
   });
 
   const product = useSelector((state) => {
@@ -22,7 +22,7 @@ const Charts = () => {
   });
 
   useEffect(() => {
-    dispatch(coustomer_api());
+    dispatch(customer_api());
     dispatch(Product_List());
     dispatch(Bill_list());
   }, []);

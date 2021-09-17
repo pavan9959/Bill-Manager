@@ -26,7 +26,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DehazeTwoToneIcon from "@material-ui/icons/DehazeTwoTone";
 import ReactToPdf from "react-to-pdf";
-import { coustomer_api } from "../action/customer-actions/Customer-actions";
+import { customer_api } from "../action/customer-actions/Customer-actions";
 import { Product_List } from "../action/Products-actions/Products-actions";
 
 const useStyle = makeStyles((theme) => ({
@@ -70,7 +70,7 @@ export default function Bill() {
   const [data, setdata] = useState([]);
   const [data2, setdata2] = useState([]);
   const [open, setOpen] = useState(false);
-  const [coustomerName, setcoustomersName] = useState("");
+  const [customerName, setcustomersName] = useState("");
   const [productid, setproductid] = useState("");
   const [date, setdate] = useState("");
   const [quantity, setquantity] = useState("");
@@ -95,7 +95,7 @@ export default function Bill() {
   const handleClickOpen = () => {
     setdispatchdata([]);
     setproductid("");
-    setcoustomersName("");
+    setcustomersName("");
     setdate("");
     setquantity("");
     setOpen(true);
@@ -105,7 +105,7 @@ export default function Bill() {
     setquantity("");
     setpopuptable([]);
     setproductid("");
-    setcoustomersName("");
+    setcustomersName("");
     setOpen(false);
   };
 
@@ -118,8 +118,8 @@ export default function Bill() {
     return state.Bill_List;
   });
 
-  const coustomer = useSelector((state) => {
-    return state.CoustomerList;
+  const customer = useSelector((state) => {
+    return state.CustomerList;
   });
 
   const products = useSelector((state) => {
@@ -133,7 +133,7 @@ export default function Bill() {
   useEffect(() => {
     dispatch(Bill_list());
     dispatch(Product_List());
-    dispatch(coustomer_api());
+    dispatch(customer_api());
   }, []);
 
   useEffect(() => {
@@ -148,15 +148,15 @@ export default function Bill() {
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    if (date && coustomer && quantity && productid && quantity > 0) {
+    if (date && customer && quantity && productid && quantity > 0) {
       let result = {
         date: date.slice(0, 10),
-        customer: coustomerName,
+        customer: customerName,
         lineItems: [{ product: productid, quantity: Number(quantity) }],
       };
       if (dispatchdata.length > 0) {
         const data = dispatchdata.map((ele) => {
-          if (ele.customer == coustomerName) {
+          if (ele.customer == customerName) {
             ele.lineItems.push(result.lineItems[0]);
           } else {
             return ele;
@@ -184,8 +184,8 @@ export default function Bill() {
     }
   };
 
-  const handelCoustomer = (e) => {
-    setcoustomersName(e.target.value);
+  const handelCustomer = (e) => {
+    setcustomersName(e.target.value);
   };
 
   const handelproduct = (e) => {
@@ -219,6 +219,27 @@ export default function Bill() {
           data.push({ ...element, name: elem.name });
         }
       });
+    });
+    let n = "";
+    billlist.map((element) => {
+      element.lineItems.map((ele) => {
+        if (ele._id == data[0]._id) {
+          n = element._id;
+        }
+      });
+    });
+
+    let id = "";
+    billlist.map((element) => {
+      if (n == element._id) {
+        id = element.customer;
+      }
+    });
+
+    customer.map((element) => {
+      if (element._id == id) {
+        data[0].name = element.name;
+      }
     });
     setviewdetails(data);
     setshow(!show);
@@ -308,12 +329,12 @@ export default function Bill() {
     if (dispatchdata.length > 0) {
       setOpen(!open);
       dispatch(add_Bill(dispatchdata[0]));
-      const coustomer_name = coustomer.filter((ele) => {
+      const customer_name = customer.filter((ele) => {
         if (ele._id == dispatchdata[0].customer) {
           return ele;
         }
       });
-      setcname(coustomer_name[0].name);
+      setcname(customer_name[0].name);
       let downloadData = [];
       products.map((ele) => {
         dispatchdata[0].lineItems.map((element) => {
@@ -357,7 +378,7 @@ export default function Bill() {
 
   const handelSearch = (e) => {
     if (e.target.value) {
-      const cdata = coustomer.filter((ele) => {
+      const cdata = customer.filter((ele) => {
         if (ele.name.includes(e.target.value)) {
           return ele;
         }
@@ -374,6 +395,14 @@ export default function Bill() {
     } else {
       setdata(data2);
     }
+  };
+
+  const Subtotal = () => {
+    let count = 0;
+    viewdetails.map((ele) => {
+      count += ele.price * ele.quantity;
+    });
+    return count;
   };
 
   const ref = React.createRef();
@@ -422,9 +451,9 @@ export default function Bill() {
                       />
                     </form>
                     <form onSubmit={handelSubmit}>
-                      <select value={coustomerName} onChange={handelCoustomer}>
+                      <select value={customerName} onChange={handelCustomer}>
                         <option value="">Select Customer</option>
-                        {coustomer.map((ele) => {
+                        {customer.map((ele) => {
                           return (
                             <option value={ele._id} key={ele.id}>
                               {ele.name}
@@ -532,11 +561,9 @@ export default function Bill() {
                     .map((ele) => {
                       return (
                         <TableRow key={ele.id}>
-                          {coustomer.map((coust, i) => {
-                            if (ele.customer == coust._id) {
-                              return (
-                                <TableCell key={i}>{coust.name}</TableCell>
-                              );
+                          {customer.map((cust, i) => {
+                            if (ele.customer == cust._id) {
+                              return <TableCell key={i}>{cust.name}</TableCell>;
                             }
                           })}
                           <TableCell>{handeltotal(ele.lineItems)}</TableCell>
@@ -598,8 +625,17 @@ export default function Bill() {
           ({ display: "flex", justifyContent: "center" }, { height: "500px" })
         }
       >
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <DialogContent>
+        <div style={{ justifyContent: "center" }}>
+          <DialogContent ref={ref}>
+            <h1>Bill</h1>
+            <hr />
+            {viewdetails[0] && (
+              <h2 style={{ color: "grey" }}>
+                Customer Name-{viewdetails[0].name}
+              </h2>
+            )}
+            <h2 style={{ color: "grey" }}>Date-{Date().slice(0, 23)}</h2>
+            <hr />
             <DialogContentText>
               <Table stickyHeader aria-label="sticky table">
                 <TableHead>
@@ -623,17 +659,42 @@ export default function Bill() {
                   })}
                 </TableBody>
               </Table>
-              <Button
-                onClick={handel_close}
-                color="primary"
-                style={{ position: "relative", left: "290px" }}
-              >
-                Close
-              </Button>
+              <hr />
             </DialogContentText>
           </DialogContent>
-          <DialogActions></DialogActions>
+          <h3
+            style={{
+              position: "relative",
+              top: "-30px",
+              left: "25px",
+              color: "grey",
+            }}
+          >
+            Total-{Subtotal()}
+          </h3>
+          <Button
+            onClick={handel_close}
+            color="primary"
+            style={{ position: "relative", left: "290px", bottom: "78px" }}
+          >
+            Close
+          </Button>
         </div>
+        <ReactToPdf targetRef={ref} filename="bill.pdf">
+          {({ toPdf }) => (
+            <Button
+              onClick={toPdf}
+              style={{
+                position: "relative",
+                bottom: "10px",
+                height: "200px",
+                backgroundColor: "lightblue",
+              }}
+            >
+              Download Bill
+            </Button>
+          )}
+        </ReactToPdf>
       </Dialog>
 
       <Dialog
@@ -648,8 +709,8 @@ export default function Bill() {
           <DialogContent ref={ref}>
             <h1>Bill</h1>
             <hr />
-            <h3>Customer Name-{cname}</h3>
-            <h3>Date-{Date().slice(0, 23)}</h3>
+            <h3 style={{ color: "grey" }}>Customer Name-{cname}</h3>
+            <h3 style={{ color: "grey" }}>Date-{Date().slice(0, 23)}</h3>
             <hr />
             <DialogContentText>
               <Table stickyHeader aria-label="sticky table">

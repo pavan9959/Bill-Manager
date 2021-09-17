@@ -2,7 +2,7 @@ const flag = false;
 const push_to_loggin = false;
 const log = false;
 const user_Details = {};
-const cou_list = [];
+const cu_list = [];
 
 export const toogle_home = (state = flag, action) => {
   switch (action.type) {
@@ -45,9 +45,9 @@ export const userDetails = (state = user_Details, action) => {
   }
 };
 
-export const Coustomer_list = (state = cou_list, action) => {
+export const Customer_list = (state = cu_list, action) => {
   switch (action.type) {
-    case "Coustomers_list": {
+    case "Customers_list": {
       return action.payload;
     }
     default: {
@@ -56,9 +56,9 @@ export const Coustomer_list = (state = cou_list, action) => {
   }
 };
 
-export const add_coustomer = (state = [], action) => {
+export const add_customer = (state = [], action) => {
   switch (action.type) {
-    case "add_coustomer": {
+    case "add_customer": {
       return [...state, { ...action.payload }];
     }
     default: {
