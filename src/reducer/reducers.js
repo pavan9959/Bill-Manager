@@ -56,10 +56,10 @@ export const Customer_list = (state = cu_list, action) => {
   }
 };
 
-export const add_customer = (state = [], action) => {
+export const add_customer = (state = {}, action) => {
   switch (action.type) {
     case "add_customer": {
-      return [...state, { ...action.payload }];
+      return action.payload;
     }
     default: {
       return state;

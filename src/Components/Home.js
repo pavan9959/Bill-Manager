@@ -8,7 +8,6 @@ const Home = () => {
       </div>
       <div>
         <h1>Bill Manager</h1>
-        <h3>Get your data at one place</h3>
         <p>
           Simple and User friendly app to keep track of your customers and
           Products

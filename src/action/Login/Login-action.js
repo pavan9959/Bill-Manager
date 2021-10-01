@@ -8,7 +8,7 @@ export const loginrequest = (data, redirect) => {
 
   return (dispatch) => {
     axios
-      .post(" http://dct-billing-app.herokuapp.com/api/users/login", data)
+      .post(" https://dct-billing-app.herokuapp.com/api/users/login", data)
       .then((response) => {
         const result = response.data;
         if (result.hasOwnProperty("errors")) {

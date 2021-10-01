@@ -7,7 +7,7 @@ export const user_detail = () => {
 
   return (dispatch) => {
     axios
-      .get("http://dct-billing-app.herokuapp.com/api/users/account", {
+      .get("https://dct-billing-app.herokuapp.com/api/users/account", {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {

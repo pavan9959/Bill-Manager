@@ -6,7 +6,6 @@ function App(props) {
   const state = useSelector((state) => {
     return state.islogged_in;
   });
-
   return (
     <div>{state || localStorage.getItem("token") ? <Router /> : <Navigation />}</div>
   );

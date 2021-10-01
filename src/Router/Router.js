@@ -8,6 +8,7 @@ import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import Dashboard from "../Components/Dashboard";
+import { Home } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,7 +69,7 @@ const Router = (props) => {
             </Button>
           </Typography>
           <Button color="inherit">
-            <Link to="" onClick={handel_logout} style={{ color: "black" }}>
+            <Link to="#" onClick={handel_logout} style={{ color: "black" }}>
               Logout
             </Link>
           </Button>

@@ -455,7 +455,7 @@ export default function Bill() {
                         <option value="">Select Customer</option>
                         {customer.map((ele) => {
                           return (
-                            <option value={ele._id} key={ele.id}>
+                            <option key={ele.id} value={ele._id} >
                               {ele.name}
                             </option>
                           );
@@ -647,9 +647,9 @@ export default function Bill() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {viewdetails.map((ele) => {
+                  {viewdetails.map((ele,i) => {
                     return (
-                      <TableRow>
+                      <TableRow key={i} >
                         <TableCell>{ele.name}</TableCell>
                         <TableCell>{ele.price}</TableCell>
                         <TableCell>{ele.quantity}</TableCell>
@@ -723,9 +723,9 @@ export default function Bill() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {downloadData.map((ele) => {
+                  {downloadData.map((ele,i) => {
                     return (
-                      <TableRow>
+                      <TableRow key={i} >
                         <TableCell>{ele.name}</TableCell>
                         <TableCell>{ele.price}</TableCell>
                         <TableCell>{ele.quantity}</TableCell>

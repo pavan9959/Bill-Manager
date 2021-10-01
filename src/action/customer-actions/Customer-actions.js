@@ -4,7 +4,7 @@ import axios from "axios";
 export const customer_api = () => {
   return (dispatch) => {
     axios
-      .get("http://dct-billing-app.herokuapp.com/api/customers", {
+      .get("https://dct-billing-app.herokuapp.com/api/customers", {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {
@@ -23,7 +23,7 @@ export const add_customer = (data) => {
   };
   return (dispatch) => {
     axios
-      .post("http://dct-billing-app.herokuapp.com/api/customers", data, {
+      .post("https://dct-billing-app.herokuapp.com/api/customers", data, {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {
@@ -31,7 +31,6 @@ export const add_customer = (data) => {
         if (result.hasOwnProperty("errors")) {
           Swal.fire("please enter correct details");
         } else {
-          console.log("add",result)
           dispatch(add(result));
         }
       })
@@ -44,7 +43,7 @@ export const add_customer = (data) => {
 export const edit = (id, data) => {
   return (dispatch) => {
     axios
-      .put(`http://dct-billing-app.herokuapp.com/api/customers/${id}`, data, {
+      .put(`https://dct-billing-app.herokuapp.com/api/customers/${id}`, data, {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {
@@ -60,12 +59,11 @@ export const delet = (id) => {
 
   return (dispatch) => {
     axios
-      .delete(`http://dct-billing-app.herokuapp.com/api/customers/${id}`, {
+      .delete(`https://dct-billing-app.herokuapp.com/api/customers/${id}`, {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {
         const result = response.data;
-        // dispatch(del(result))
       });
   };
 };

@@ -26,7 +26,6 @@ const Charts = () => {
     dispatch(Product_List());
     dispatch(Bill_list());
   }, []);
-  console.log(billData)
 
   const chartdata = () => {
     if (billData) {

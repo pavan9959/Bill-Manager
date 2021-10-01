@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 export const Bill_list = () => {
   return (dispatch) => {
     axios
-      .get("http://dct-billing-app.herokuapp.com/api/bills", {
+      .get("https://dct-billing-app.herokuapp.com/api/bills", {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {
@@ -20,7 +20,7 @@ export const Bill_list = () => {
 export const add_Bill = (data) => {
   return (dispatch) => {
     axios
-      .post("http://dct-billing-app.herokuapp.com/api/bills", data, {
+      .post("https://dct-billing-app.herokuapp.com/api/bills", data, {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {
@@ -36,7 +36,7 @@ export const add_Bill = (data) => {
 export const delete_bill = (data) => {
   return (dispatch) => {
     axios
-      .delete(`http://dct-billing-app.herokuapp.com/api/bills/${data._id}`, {
+      .delete(`https://dct-billing-app.herokuapp.com/api/bills/${data._id}`, {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {
@@ -51,7 +51,7 @@ export const delete_bill = (data) => {
 export const Get_bill = (id, setviewdata) => {
   return (dispatch) => {
     axios
-      .get(`http://dct-billing-app.herokuapp.com/api/bills/${id}`, {
+      .get(`https://dct-billing-app.herokuapp.com/api/bills/${id}`, {
         headers: { Authorization: localStorage.getItem("token") },
       })
       .then((response) => {

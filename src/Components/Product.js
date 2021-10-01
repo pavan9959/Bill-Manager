@@ -241,9 +241,9 @@ export default function Product() {
                         page * rowsPerPage,
                         page * rowsPerPage + rowsPerPage
                       )
-                      .map((ele) => {
+                      .map((ele,i) => {
                         return (
-                          <TableRow>
+                          <TableRow key={i} >
                             <TableCell>{ele.name}</TableCell>
                             <TableCell>{ele.price}</TableCell>
                             <TableCell>

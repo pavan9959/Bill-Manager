@@ -98,7 +98,7 @@ export default function Customer() {
   }, []);
 
   useEffect(() => {
-    setdata2([...data, ...AddCustomer]);
+    setdata([...data,AddCustomer]);
   }, [AddCustomer]);
 
   useEffect(() => {
@@ -275,9 +275,9 @@ export default function Customer() {
                         page * rowsPerPage,
                         page * rowsPerPage + rowsPerPage
                       )
-                      .map((row) => {
+                      .map((row,i) => {
                         return (
-                          <TableRow>
+                          <TableRow key={i} >
                             <TableCell>{row.name}</TableCell>
                             <TableCell>{row._id}</TableCell>
                             <TableCell>{row.mobile}</TableCell>
