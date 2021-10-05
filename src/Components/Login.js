@@ -50,7 +50,7 @@ const Login = (props) => {
         <div>
           <form onSubmit={handelSubmit}>
             <input
-              style={{ marginBottom: "5px" ,width:"300px",height:"30px"}}
+              style={{ marginBottom: "5px" ,width:"300px",height:"30px",borderRadius:"4px"}}
               type="text"
               value={email}
               placeholder="Email"
@@ -58,7 +58,7 @@ const Login = (props) => {
             />
             <br />
             <input
-              style={{width:"300px",height:"30px"}}
+              style={{width:"300px",height:"30px",borderRadius:"4px"}}
               type="password"
               value={password}
               placeholder="Password"

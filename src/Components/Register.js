@@ -81,14 +81,14 @@ const Register = (props) => {
             placeholder="Enter name"
             value={name}
             onChange={handelname}
-            style={{ marginBottom: "5px", width: "300px", height: "30px" }}
+            style={{ marginBottom: "5px", width: "300px", height: "30px",borderRadius:"4px" }}
           ></input>
           <br />
           <input
             placeholder="Enter Email"
             value={email}
             onChange={handelemail}
-            style={{ marginBottom: "5px", width: "300px", height: "30px" }}
+            style={{ marginBottom: "5px", width: "300px", height: "30px",borderRadius:"4px" }}
           ></input>
           <br />
           <input
@@ -96,21 +96,21 @@ const Register = (props) => {
             placeholder="Enter Password"
             value={password}
             onChange={handelpassword}
-            style={{ marginBottom: "5px", width: "300px", height: "30px" }}
+            style={{ marginBottom: "5px", width: "300px", height: "30px",borderRadius:"4px" }}
           ></input>
           <br />
           <input
             placeholder="Business name"
             value={busimessname}
             onChange={handelBname}
-            style={{ marginBottom: "5px", width: "300px", height: "30px" }}
+            style={{ marginBottom: "5px", width: "300px", height: "30px",borderRadius:"4px" }}
           ></input>
           <br />
           <textarea
             placeholder="Address"
             value={address}
             onChange={handeladdress}
-            style={{ marginBottom: "5px", width: "300px", height: "50px" }}
+            style={{ marginBottom: "5px", width: "300px", height: "50px",borderRadius:"4px" }}
           ></textarea>
           <br />
           <button
